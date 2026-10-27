@@ -1,56 +1,64 @@
+[README.md](https://github.com/user-attachments/files/34002354/README.md)
 # OPTIMUS X
 
-A local-only Windows optimization dashboard built with Python and CustomTkinter.
+A Windows 10/11 optimizer for gaming and performance, built with Python and CustomTkinter.
 
-Optimus X combines live hardware telemetry, reversible performance tweaks, careful
-bloatware removal, a gaming profile and maintenance tools in one dark neon interface.
-Every change is confirmed, backed up and written to a local audit log — nothing is
-uploaded and no bundlers or installers are included.
+Optimus X combines live hardware telemetry, reversible tweaks, careful bloatware removal, a gaming profile and maintenance tools in one dark neon interface. Everything runs locally: nothing is uploaded. Every change is confirmed, backed up and logged.
 
 ![Dashboard](docs/screenshot-dashboard.png)
 
+> **Warning:** Optimus X modifies Windows services, registry values, policies and installed packages. Use it at your own risk, on a machine you can restore, and review every dialog before confirming. See the [Disclaimer](#disclaimer).
+
 ---
 
-## Highlights
+## Features
 
 | Page | What it does |
 | --- | --- |
-| **Dashboard** | Live CPU / RAM / GPU gauges, sparklines, temperature readout, network latency, optimization score and two confirmed profiles: **Normal optimization** (recommended tweaks) and **Extreme optimization** (every reversible tweak). |
-| **Tweaks & Privacy** | Stage, review and apply reversible service, registry, kernel, network and visual tweaks. Filters by category, shows per-tweak risk and reboot requirements, and offers one-click **Recommended** and **Extreme · all** profiles. |
-| **Deep Cleaner** | Finds installed UWP/AppX bloat, removes selected packages for the current user and the provisioned image, toggles legacy components (Copilot and Recall policies, Edge and OneDrive removal, Windows Media Player Legacy, DirectPlay) and reclaims disk space from temporary locations. |
-| **Game Boost** | Applies the competitive gaming profile, offers power plans, lists top processes by CPU/RAM and can end selected processes after confirmation. |
-| **Toolbox** | Restore point, network stack reset, Explorer restart, disk health scan, temporary-file cleanup, Markdown system report and log access. |
-| **Settings** | Administrator state, dry-run mode, restore-point default, backup counter, revert-all action, audit log viewer and local data folder. |
+| **Dashboard** | Live CPU / RAM / GPU gauges, temperature, network latency, optimization score and two profiles: **Normal** (recommended tweaks) and **Extreme** (every reversible tweak). |
+| **Tweaks & Privacy** | Stage tweaks by category, review pending changes and apply them in one batch. Shows risk level and reboot requirements, and lets you revert each tweak. |
+| **Deep Cleaner** | Removes preinstalled apps (AppX), manages components (Copilot, Recall, Edge, OneDrive, Windows Media Player Legacy, DirectPlay) and cleans temporary files. |
+| **Game Boost** | Applies the competitive profile, switches the power plan and ends memory-heavy background processes. |
+| **Toolbox** | Restore point, SFC, DISM, network reset, Explorer restart, disk health scan and a system report. |
+| **Settings** | Administrator status, dry-run mode, backups, revert-all and an activity log viewer. |
 
-### What is covered
+### What it optimizes
 
-- **Services** — SysMain/SuperFetch, Windows Search indexing, Windows Update manual
-  mode, telemetry/DiagTrack, Fax, Geolocation, Print Spooler, Maps manager, Xbox Live,
-  Windows Media Player Network Sharing.
-- **Kernel & registry** — DisablePagingExecutive, Win32PrioritySeparation, processor
-  responsiveness, games task priority, power throttling, raw input latency, HAGS
-  enable/disable, hibernation, Game DVR, fullscreen optimizations.
-- **Network & latency** — NetworkThrottlingIndex, TCPNoDelay and TcpAckFrequency on
-  active adapters, DNS cache sizing and resolver flush, QoS reserved bandwidth.
-- **Visual & DWM** — transparency, window animations, Aero Peek, drag-full-windows,
-  taskbar animations, and Explorer performance mode (icon-only folders, hidden status bar).
-- **Privacy** — Copilot and Recall disablement, telemetry service handling.
-- **UWP bloat** — Xbox suite, Mail & Calendar, Maps, Movies & TV, Weather, Phone Link,
-  Get Help, Tips, Solitaire, People, Office Hub, Skype, Feedback Hub, News, Clipchamp,
-  Microsoft To Do, Power Automate and more (27 known packages; only installed ones are
-  listed).
-- **Junk cleanup** — user temp, Windows temp, DirectX shader cache, crash dumps,
-  Explorer thumbnails, Delivery Optimization cache, Windows Update download cache and
-  the Recycle Bin.
+**1. Debloat and components**
+- Uninstall UWP/AppX apps (Xbox, Mail & Calendar, Maps, Movies & TV, Weather, Phone Link, Cortana, Teams, Clipchamp and more). Only packages that are actually installed are listed.
+- Optional removal of **Microsoft Edge** and **OneDrive**, including OneDrive's entry in the File Explorer navigation pane.
+- Disable **Windows Copilot** and **Recall**.
+- Disable **Windows Media Player Legacy** and **DirectPlay**.
+
+**2. Services**
+- SysMain (SuperFetch), Windows Search, Telemetry (DiagTrack, dmwappushservice and the compatibility/CEIP scheduled tasks).
+- Windows Update in **controlled mode**: manual start, asks before downloading or installing, and blocks automatic restarts while you are signed in.
+- Fax, Geolocation, Print Spooler, Downloaded Maps Manager, Xbox Live services and WMP network sharing.
+
+**3. Registry and kernel**
+- `DisablePagingExecutive`, `Win32PrioritySeparation`, `SystemResponsiveness`, the *Games* task priority and Power Throttling.
+- Direct mouse input (no pointer acceleration) and USB selective suspend disabled.
+- Hardware-accelerated GPU scheduling (HAGS): enable or disable, with the two options mutually exclusive.
+- Hibernation, Game Bar/DVR and fullscreen optimizations.
+
+**4. Network and latency**
+- Nagle's algorithm (`TCPNoDelay`, `TcpAckFrequency`) on active adapters.
+- `NetworkThrottlingIndex`, DNS cache tuning and the QoS reserved-bandwidth limit.
+
+**5. Interface and visual effects**
+- Transparency, window animations, Aero Peek and drag-full-windows.
+- File Explorer performance mode (icons instead of thumbnails, no status bar).
+
+**6. Disk cleanup**
+- User and Windows temp files, DirectX shader cache, crash dumps, thumbnail cache, Delivery Optimization and Windows Update caches, and the Recycle Bin.
 
 ---
 
 ## Requirements
 
 - Windows 10 or Windows 11, 64-bit.
-- Python 3.11 or newer (tested with Python 3.15, 64-bit).
-- Administrator rights are required for system-wide changes. The interface still opens
-  as a standard user and prompts for elevation when needed.
+- Python 3.11 or newer.
+- Administrator rights for system-wide changes. The interface opens without them and asks for elevation when needed.
 
 Dependencies are pinned in `requirements.txt`:
 
@@ -69,46 +77,26 @@ python -m pip install -r requirements.txt
 python main.py
 ```
 
-Run from a normal terminal. For full functionality, start with **Settings → Restart as
-admin** (Windows shows a UAC prompt), or launch the terminal as administrator.
+For full functionality, open the terminal as administrator or use **Settings → Restart as admin** (Windows shows a UAC prompt).
 
-The app opens at a 1280×720 starting size and can be resized, minimized, maximized and
-dragged from its custom title bar. Window position and size are remembered.
+The window opens at 1280×720, can be moved, resized and maximized, and remembers its position and size.
 
 ---
 
 ## Safety model
 
-Optimus X is reversible by design.
-
-1. **Confirmation first** — destructive or advanced actions open a dialog listing every
-   change, with warnings, a risk badge and (for removals) a required acknowledgement.
-   This includes the Normal and Extreme profiles and per-row staged changes.
-2. **Dry-run mode** — enable it in Settings to log commands without touching the registry,
-   services or files. Game Boost, Tweaks and quick optimize all report dry-run results.
-3. **Restore point** — optional Windows checkpoint before applying a profile. The setting
-   is preselected by default and can be disabled, but is ignored when not elevated.
-4. **Backups** — original registry values and service start types are stored in
-   `backups.json` before the first write. Settings → **Revert backed-up tweaks** restores
-   them; Deep Cleaner component cards restore their own saved state.
-5. **Audit trail** — every apply, revert, removal, cleanup and report export is appended
-   to `logs\actions.log`; technical events go to `logs\optimusx.log` (rotated).
-6. **No silent system access** — the app never downloads code, sends telemetry or bundles
-   third-party installers.
-
-### Administrator handling
-
-- Standard-user sessions can browse every page, stage tweaks and preview profiles.
-- Actions that need elevation show an **Administrator rights required** dialog; accepting
-  relaunches the app elevated through a UAC prompt.
-- AppX removal, service changes, system registry writes, restore points and repair tools
-  are gated behind that prompt.
-- Pure per-user registry tweaks do not require elevation.
+1. **Confirmation first:** every action lists the changes, warnings and risk level before it runs. Removals require an acknowledgement checkbox.
+2. **Dry-run mode:** enable it in Settings to simulate everything. Commands are logged without touching the system, and no administrator rights are needed.
+3. **Restore point:** optional before applying a profile. Windows normally allows only one every 24 hours; Optimus X handles that and tells you if it could not create one.
+4. **Original-value backups:** the previous value of every registry key and the start type of every service are saved before anything is written. When two tweaks share a key, the true original value is kept.
+5. **Revert:** each tweak can be reverted individually, or all at once from Settings. Edge and OneDrive are reinstalled with `winget`; AppX apps can be recovered from the Microsoft Store.
+6. **Audit trail:** every apply, revert, cleanup and export is written to `logs\actions.log`.
+7. **Cleanup protections:** links and NTFS junctions are never followed, and dangerous root folders are refused (for example, if `TEMP` points at a whole drive or your profile).
+8. **No hidden access:** the app never downloads code, sends telemetry or bundles third-party installers.
 
 ### Reboots
 
-Kernel, network and some service changes only take full effect after a restart. The app
-marks these tweaks and reminds you when a reboot is recommended.
+Some changes (kernel, network, some services) only take full effect after a restart. Each affected tweak carries a **REBOOT** badge.
 
 ---
 
@@ -120,7 +108,7 @@ Everything is stored under `%LOCALAPPDATA%\OptimusX`:
 OptimusX\
 ├─ data\
 │  ├─ settings.json     # preferences, window geometry, last optimization
-│  └─ backups.json      # reversible registry/service snapshots
+│  └─ backups.json      # reversible registry/service backups
 ├─ logs\
 │  ├─ actions.log       # human-readable audit trail
 │  └─ optimusx.log      # rotating technical log
@@ -128,8 +116,7 @@ OptimusX\
    └─ OptimusX_Report_YYYYMMDD_HHMMSS.md
 ```
 
-Settings → **Open data folder** opens this directory. Deleting it resets the app to its
-defaults.
+Deleting this folder resets the app. **Revert your tweaks from Settings first**, because `backups.json` is what makes them reversible.
 
 ---
 
@@ -137,14 +124,15 @@ defaults.
 
 | Symptom | Fix |
 | --- | --- |
-| Buttons for system changes show an admin prompt | Run **Settings → Restart as admin** and accept the UAC prompt. |
-| “Dry-run” messages appear after an action | Disable **Dry-run mode** in Settings. |
-| A tweak shows `—` for latency or no temperature | The sensor or network probe is unavailable on this hardware; gauges still work. |
-| Windows Defender or SmartScreen warns about the app | It is an unsigned local Python utility. Review the source or allow it locally. |
-| AppX removal fails for a package | The package may be provisioned by policy or in use. Sign out/in and retry as administrator. |
-| A change should be undone | Use **Settings → Revert backed-up tweaks** or the restore button on the affected Deep Cleaner card. |
-| Window opens off-screen after a monitor change | Delete `%LOCALAPPDATA%\OptimusX\data\settings.json`; the window re-centers at 1280×720. |
-| `ModuleNotFoundError: customtkinter` | Install dependencies with `python -m pip install -r requirements.txt`. |
+| A button shows "Administrator rights required" | Use **Settings → Restart as admin** and accept the UAC prompt. |
+| "Dry-run" messages appear | Turn off **Dry-run mode** in Settings. |
+| No CPU temperature | The reading needs administrator rights and not every motherboard exposes it. The other gauges still work. |
+| Reverting a tweak says "No saved backup" | The value was already set before using Optimus X, or the backup was deleted. Change it manually in Windows. |
+| Edge uninstall fails | Some Windows builds and regions block it. Windows may also reinstall Edge after a feature update. |
+| An AppX package fails to remove | It may be protected by policy or in use. Sign out, sign back in and retry as administrator. |
+| SmartScreen or antivirus warns about the app | It is an unsigned local utility. Review the source code or allow it locally. |
+| The window opens off-screen | Delete `%LOCALAPPDATA%\OptimusX\data\settings.json`. |
+| `ModuleNotFoundError: customtkinter` | Run `python -m pip install -r requirements.txt`. |
 
 ---
 
@@ -155,50 +143,33 @@ main.py                     Entry point
 requirements.txt            Pinned dependencies
 app\
 ├─ application.py           Window shell, navigation, quick optimize, elevation
-├─ theme.py                 Colors, fonts, category metadata
-├─ assets\                  Application icon
+├─ theme.py                 Colors, fonts and categories
 ├─ core\
 │  ├─ admin.py              Elevation and privilege checks
 │  ├─ catalog.py            Declarative tweak, AppX and component definitions
-│  ├─ cleaner.py            AppX removal, junk scanning and cleaning
+│  ├─ cleaner.py            File cleanup and AppX removal
 │  ├─ commands.py           Streaming PowerShell runner with cancellation
 │  ├─ executor.py           Backup / apply / revert engine
 │  ├─ metrics.py            Background telemetry sampler
 │  ├─ report.py             Markdown system report
-│  ├─ store.py              Settings, backups, audit logs and paths
-│  └─ system.py             Registry, services, power plans, hardware probes
-└─ ui\
-   ├─ chrome.py             Custom title bar, status bar, maximize, drag
-   ├─ cards.py              Pillow-anti-aliased metric cards with sparklines
-   ├─ controls.py           Toggle switches, glow buttons, pills, headers
-   ├─ dialogs.py            Confirm / task / info dialogs
-   ├─ draw.py               Color and text helpers
-   ├─ flows.py              Shared confirm / restore-point / task batch flow
-   ├─ gauge.py              Supersampled telemetry gauge sprites
-   ├─ icons.py              Canvas icon drawing
-   ├─ sidebar.py            Navigation and identity block
-   ├─ toasts.py             Non-blocking notifications
-   ├─ widgets.py            Page bases and resilient smooth scrolling
-   └─ pages\                Dashboard, Tweaks, Cleaner, Game Boost, Toolbox, Settings
+│  ├─ store.py              Settings, backups and logs
+│  └─ system.py             Registry, services, power plans and hardware probes
+└─ ui\                      Title bar, cards, dialogs and pages
 ```
 
 ---
 
 ## Notes
 
-- UI text is English; the interface uses a dark navy glass theme with cyan and green
-  accents.
-- The layout is tuned for 1280×720 and larger; the window enforces a minimum size so
-  pages stay readable.
-- AppX removal is intentionally curated. System-critical packages, the Store itself and
-  frameworks are never listed.
-- Some tweaks trade functionality for latency or memory (for example, disabling Search
-  indexing slows Start-menu searches). Each card states the trade-off before you apply it.
+- Some tweaks trade functionality for latency or memory (for example, disabling Search indexing slows down Start-menu searches). Each card states the trade-off before you apply it.
+- Kernel tweaks such as `DisablePagingExecutive` are only recommended with 16 GB of RAM or more.
+- The AppX list is curated: it never includes the Microsoft Store, system-critical packages or frameworks.
+- The "estimated FPS gain" on the Dashboard is a rough heuristic, not a measurement.
 
 ## Disclaimer
 
-Optimus X modifies Windows services, registry values, installed packages and temporary
-files. It is provided as-is, without warranty. Use it on a machine you can restore, keep
-a Windows restore point or image backup, and review each dialog before confirming. The
-authors are not responsible for data loss, reduced functionality or policy violations
-resulting from misuse.
+Optimus X is provided as-is, without warranty of any kind. It modifies Windows services, registry values, installed packages and temporary files. Use it on a machine you can restore, keep a Windows restore point or full system image, and review each dialog before confirming. The authors are not responsible for data loss, reduced functionality or policy violations resulting from its use.
+
+## License
+
+[MIT](LICENSE)
