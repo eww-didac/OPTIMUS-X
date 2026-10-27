@@ -20,7 +20,7 @@ Cut background noise, lower latency and free up resources, **with every change b
 
 Windows ships with a lot you never asked for: preinstalled apps, background services, telemetry and effects that eat RAM, CPU and frame time. Optimus X lets you switch them off from one clean dashboard, and **undo anything** if you change your mind.
 
-| | |
+| Feature | What you get |
 | --- | --- |
 | 🛡️ **Reversible by design** | Original values are saved before every change. One click restores them. |
 | 🧪 **Dry-run mode** | Preview exactly what would happen without touching your system. |
@@ -331,4 +331,4 @@ Released under the [MIT License](LICENSE).
 **If Optimus X helped you, consider leaving a ⭐ on the repository.**
 
 </div>
-E(2).md…]()
+E(3).md…]()
