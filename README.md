@@ -63,7 +63,8 @@ pillow==13.0.0
 ## Install and run
 
 ```powershell
-cd C:\PROYECTOS\OPTIMIZADOR
+git clone https://github.com/eww-didac/OPTIMUS-X.git
+cd OPTIMUS-X
 python -m pip install -r requirements.txt
 python main.py
 ```
