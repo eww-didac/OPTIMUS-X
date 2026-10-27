@@ -329,6 +329,3 @@ Released under the [MIT License](LICENSE).
 <div align="center">
 
 **If Optimus X helped you, consider leaving a ⭐ on the repository.**
-
-</div>
-E(3).md…]()
