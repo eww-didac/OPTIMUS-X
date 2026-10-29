@@ -1,5 +1,8 @@
-[README(5).md](https://github.com/user-attachments/files/34152856/README.5.md)
 <div align="center">
+
+<img src="docs/logo-icon.svg" alt="Optimus X icon" width="128">
+
+<br><br>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/logo.svg">
