@@ -1,6 +1,7 @@
 <div align="center">
 
 <img src="docs/logo-icon.svg" alt="Optimus X icon" width="128">
+# OPTIMUS X
 
 <br>
 
