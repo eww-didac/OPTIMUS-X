@@ -2,14 +2,6 @@
 
 <img src="docs/logo-icon.svg" alt="Optimus X icon" width="128">
 
-<br><br>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/logo.svg">
-  <source media="(prefers-color-scheme: light)" srcset="docs/logo-light.svg">
-  <img src="docs/logo-light.svg" alt="Optimus X" width="420">
-</picture>
-
 <br>
 
 **A Windows optimizer for gaming PCs, with backups, dry-run mode and a revert button for every setting it can restore.**
