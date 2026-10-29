@@ -1,12 +1,21 @@
-# ⚡ OPTIMUS X
+[README(5).md](https://github.com/user-attachments/files/34152856/README.5.md)
+<div align="center">
 
-### The Windows optimizer built for gamers
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/logo.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/logo-light.svg">
+  <img src="docs/logo-light.svg" alt="Optimus X" width="420">
+</picture>
 
-Cut background noise, lower latency and free up resources, **with every change backed up and reversible.**
+<br>
 
-![Platform](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?style=for-the-badge&logo=windows&logoColor=white)
+**A Windows optimizer for gaming PCs, with backups, dry-run mode and a revert button for every setting it can restore.**
+
+<br>
+
+![Platform](https://img.shields.io/badge/Windows-10%20%7C%2011%20(64--bit)-0078D4?style=for-the-badge&logo=windows&logoColor=white)
+![Version](https://img.shields.io/badge/Version-2.0-34C9F4?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-2FE0A4?style=for-the-badge)
-![Privacy](https://img.shields.io/badge/Telemetry-None-34C9F4?style=for-the-badge)
 
 <br>
 
@@ -16,158 +25,182 @@ Cut background noise, lower latency and free up resources, **with every change b
 
 <br>
 
-## ✨ Why Optimus X?
+## Read this first
 
-Windows ships with a lot you never asked for: preinstalled apps, background services, telemetry and effects that eat RAM, CPU and frame time. Optimus X lets you switch them off from one clean dashboard, and **undo anything** if you change your mind.
+Optimus X changes real Windows settings. Before you run it:
 
-| Feature | What you get |
+- **Not everything can be undone.** Registry values and service settings are backed up and can be restored from the app. Removing apps, uninstalling Edge or OneDrive, and cleaning files **cannot** be restored by the revert button. See [What can and cannot be reverted](#what-can-and-cannot-be-reverted).
+- **Windows Update moves to manual mode.** You will no longer get updates automatically. Install security updates yourself on a regular basis.
+- **The installer is not code-signed yet.** Windows SmartScreen will warn you. Verify the file hash (see [Installation](#installation)) and read the source before you click *Run anyway*.
+- **Create a restore point or system image first.** The app can do it for you, but a full backup is safer.
+- **Use dry-run mode on your first run.** It shows exactly what would change without touching your system.
+
+<br>
+
+## Overview
+
+Windows ships with preinstalled apps, background services, telemetry and visual effects that use RAM, CPU and disk. Optimus X lets you turn them off from one dashboard and shows you what each change does before you apply it.
+
+| Feature | Details |
 | --- | --- |
-| 🛡️ **Reversible by design** | Original values are saved before every change. One click restores them. |
-| 🧪 **Dry-run mode** | Preview exactly what would happen without touching your system. |
-| 🔒 **100% local** | No accounts, no cloud, no telemetry. Nothing leaves your PC. |
-| 📋 **Full activity log** | Every change is written to a readable log you can review any time. |
-| 🎮 **Made for gaming** | A competitive profile that targets latency and frame-time consistency. |
+| **Backup and revert** | The original value of each registry and service setting is saved before it is changed. One click restores it. |
+| **Dry-run mode** | Preview every change without modifying your system. |
+| **Confirmation window** | Lists every change with its risk level, reboot requirement and trade-off before anything runs. |
+| **Activity log** | Every change is written to a readable log. |
+| **Local only** | No account, no cloud. See [Privacy and network activity](#privacy-and-network-activity). |
 
 <br>
 
-## 🚀 What you can do
+## Features
 
-### 📊 Dashboard
-Live **CPU, RAM and GPU** gauges, temperature, network latency and an optimization score. Two one-click profiles:
-- **Normal optimization:** the recommended, low-risk set of tweaks.
-- **Extreme optimization:** every reversible tweak, for maximum performance.
+### Dashboard
+Live CPU, RAM and GPU gauges, temperature, network latency and an optimization score. Two profiles:
 
-### 🔧 Tweaks & Privacy
-Turn individual tweaks on or off, review them, then apply everything in one batch. Each tweak shows its **risk level** and whether it needs a **reboot**.
+- **Normal optimization:** a recommended set of 14 tweaks that can all be reverted from the app.
+- **Extreme optimization:** all 27 tweaks, including advanced ones and some that cannot be reverted. It asks you to create a restore point first.
 
-### 🧹 Deep Cleaner
-- Remove preinstalled apps: **Xbox, Mail, Maps, Movies & TV, Weather, Phone Link, Cortana, Teams, Clipchamp** and more.
-- Uninstall **Microsoft Edge** and **OneDrive** (optional).
-- Disable **Windows Copilot** and **Recall**.
-- Remove **Windows Media Player Legacy** and **DirectPlay**.
-- Clean temporary files, shader cache, crash dumps, update caches and the Recycle Bin.
+### Tweaks & Privacy
+Turn individual tweaks on or off, review them, then apply them in one batch. Each tweak shows its risk level and whether it needs a reboot.
 
-### 🎮 Game Boost
-Activate the competitive gaming profile with one switch, change your power plan and close memory-hungry background apps.
+### Deep Cleaner
+Removes preinstalled apps, optionally uninstalls Microsoft Edge and OneDrive, disables Copilot and Recall, and cleans temporary files and caches.
 
-### 🧰 Toolbox
-Create a **restore point**, run **SFC** and **DISM** repairs, reset the network stack, restart Explorer, check disk health and export a full system report.
+### Game Boost
+Switches on the gaming profile, changes the power plan and closes memory-hungry background apps.
 
-### ⚙️ Settings
-See your administrator status, enable dry-run mode, revert every change at once and read the activity log.
+### Toolbox
+Creates a restore point, runs SFC and DISM, resets the network stack, restarts Explorer, checks disk health and exports a system report.
+
+### Settings
+Shows your administrator status, toggles dry-run mode, reverts all backed-up tweaks and opens the activity log.
 
 <br>
 
-## 🎯 What gets optimized
+## What it changes
 
-<details>
-<summary><b>🗑️ Debloat and components</b></summary>
+Counts and defaults can change between versions. The confirmation window always shows the current list.
 
-<br>
+> The **Reverts from the app** column describes the type of change. Check it against the code or the in-app confirmation window before relying on it.
 
-- Preinstalled UWP/AppX apps (only the ones actually installed are shown)
-- Microsoft Edge and OneDrive, including OneDrive's entry in the File Explorer sidebar
-- Windows Copilot and Recall
-- Windows Media Player Legacy and DirectPlay
+### Debloat and components
 
-</details>
+| Change | Reverts from the app | Trade-off |
+| --- | --- | --- |
+| Preinstalled UWP/AppX apps (only installed ones are listed; the Microsoft Store and system-critical packages are excluded) | No. Reinstall from the Microsoft Store | You lose those apps and their data |
+| Microsoft Edge | No | Windows can reinstall it after a feature update. Some apps depend on Edge components such as WebView2 |
+| OneDrive and its File Explorer sidebar entry | Sidebar entry: yes. Uninstall: no | Files synced to the cloud stop syncing |
+| Windows Copilot | Yes | Feature unavailable |
+| Recall | Yes | Windows 11 only |
+| Windows Media Player Legacy and DirectPlay | No. Re-enable in *Windows Features* | Old games or media apps may need DirectPlay |
 
-<details>
-<summary><b>🛠️ Windows services</b></summary>
+### Services
 
-<br>
+| Change | Reverts from the app | Trade-off |
+| --- | --- | --- |
+| SysMain (SuperFetch) off | Yes | Less app preloading and fewer SSD writes. Little effect on modern SSDs, and apps may open a bit slower on HDDs |
+| Windows Search off | Yes | Start menu and File Explorer searches become slower |
+| Windows Update in controlled mode | Yes | Manual start, asks before downloading or installing, and does not restart your PC while you are signed in. **You must install security updates yourself** |
+| Telemetry (DiagTrack, push service, compatibility and CEIP tasks) | Yes | Less diagnostic data sent to Microsoft |
+| Fax, Geolocation, Downloaded Maps, WMP network sharing | Yes | Matching features stop working |
+| Print Spooler | Yes | **You cannot print** until it is re-enabled |
+| Xbox Live services | Yes | Xbox app, Game Pass and games that use Xbox sign-in or cloud saves may stop working |
 
-- **SysMain (SuperFetch):** stops useless app preloading and extra SSD writes
-- **Windows Search:** stops the indexer from scanning your drives while you play
-- **Windows Update (controlled mode):** manual start, asks before downloading or installing, and never restarts your PC while you are signed in
-- **Telemetry:** DiagTrack, push service and the compatibility / CEIP scheduled tasks
-- **Minor services:** Fax, Geolocation, Print Spooler, Downloaded Maps, Xbox Live and WMP network sharing
+### Registry and kernel
 
-</details>
+| Change | Reverts from the app | Trade-off |
+| --- | --- | --- |
+| Keep kernel and drivers in RAM (`DisablePagingExecutive`) | Yes | Recommended only with 16 GB of RAM or more |
+| Foreground game priority and multimedia scheduling | Yes | Background tasks get less CPU time while a game runs |
+| Power Throttling off | Yes | Higher power use and heat, especially on laptops |
+| Raw mouse input (no pointer acceleration) | Yes | Pointer feel changes |
+| USB selective suspend off | Yes | Slightly higher power use on laptops |
+| Hardware-accelerated GPU scheduling (HAGS) on or off | Yes | Results depend on GPU and driver. It can help or hurt |
+| Hibernation off | Yes | Frees several GB, but also disables Fast Startup and hibernate |
+| Game Bar and DVR off | Yes | Xbox Game Bar capture stops working |
+| Fullscreen optimizations off | Yes | Some games perform worse without them |
 
-<details>
-<summary><b>🧠 Registry and kernel</b></summary>
+### Network and latency
 
-<br>
+| Change | Reverts from the app | Trade-off |
+| --- | --- | --- |
+| Nagle's algorithm and delayed ACK off on active adapters | Yes | Benefit is small and depends on the game and network |
+| Network throttling removed | Yes | Small effect on most setups |
+| DNS cache tuning | Yes | Small effect |
+| Reserved QoS bandwidth released | Yes | Small effect |
 
-- Keep kernel and drivers in RAM (`DisablePagingExecutive`)
-- Foreground game priority and multimedia scheduling
-- Power Throttling off
-- Raw mouse input (no pointer acceleration) and USB selective suspend off
-- Hardware-accelerated GPU scheduling (HAGS) on or off
-- Hibernation off (frees several GB), Game Bar / DVR off, fullscreen optimizations off
+### Interface and visual effects
 
-</details>
+| Change | Reverts from the app | Trade-off |
+| --- | --- | --- |
+| Transparency, window animations, Aero Peek, drag full windows off | Yes | Plainer look |
+| File Explorer performance mode (icons instead of thumbnails, no status bar) | Yes | Less visual information |
 
-<details>
-<summary><b>🌐 Network and latency</b></summary>
+### Disk cleanup
 
-<br>
+| Change | Reverts from the app | Trade-off |
+| --- | --- | --- |
+| User and Windows temp files | No | Deleted files are gone |
+| DirectX shader cache, crash dumps, thumbnail cache | No | Games rebuild the shader cache, so the first launch afterwards can stutter |
+| Delivery Optimization and Windows Update caches | No | Updates may need to download again |
+| Recycle Bin | No | Permanently deletes its contents |
 
-- Nagle's algorithm and delayed ACK off on your active adapters
-- Network throttling removed
-- DNS cache tuning
-- Reserved QoS bandwidth released
-
-</details>
-
-<details>
-<summary><b>🖥️ Interface and visual effects</b></summary>
-
-<br>
-
-- Transparency, window animations, Aero Peek and drag-full-windows off
-- File Explorer performance mode (icons instead of thumbnails, no status bar)
-
-</details>
-
-<details>
-<summary><b>💾 Disk cleanup</b></summary>
-
-<br>
-
-- User and Windows temp files
-- DirectX shader cache and crash dumps
-- Thumbnail cache
-- Delivery Optimization and Windows Update caches
-- Recycle Bin
-
-</details>
+The cleaner never follows links and refuses to touch protected folders.
 
 <br>
 
-## 📦 Installation
+## What can and cannot be reverted
 
-Installing Optimus X takes less than a minute. **You don't need Python or any other tool.**
+| Type of change | How to undo it |
+| --- | --- |
+| Registry values and service settings | **Settings → Revert backed-up tweaks**, or revert a single tweak. Uses the value saved before the change |
+| Apps removed | Reinstall from the Microsoft Store |
+| Edge and OneDrive uninstalled | Reinstall manually from Microsoft |
+| Optional Windows features (WMP Legacy, DirectPlay) | *Windows Features* control panel |
+| Deleted temp files, caches and Recycle Bin | Cannot be restored |
 
-<div align="center">
+If a tweak says **"No saved backup"** when you revert it, that value was already set before you used Optimus X, or its backup was deleted. The app cannot know the original value, so change it manually in Windows.
 
-### [⬇️ Download the latest installer](https://github.com/eww-didac/OPTIMUS-X/releases/latest)
+For anything the app cannot restore, use the **Windows restore point** it offers to create, or a system image.
 
-</div>
+<br>
 
-**1.** Open the link above and, under **Assets**, download **`OptimusX-Setup-x.x.x.exe`**.
+## Performance expectations
 
-**2.** Double-click the file you downloaded.
+There are no published benchmarks for Optimus X yet. Results depend heavily on your hardware, drivers and games. Several tweaks, such as Nagle/delayed ACK and SysMain, have small or debatable effects on modern hardware, and removing apps or services mainly frees memory and background activity rather than raising frame rates directly.
 
-**3.** If Windows shows *"Windows protected your PC"*, click **More info → Run anyway**. This appears because the installer is not code-signed yet; it is a normal warning for new, independent apps.
+The **"Estimated performance gain"** shown on the dashboard is a rough guide, not a measurement. To check the real effect on your PC, measure frame times before and after with a tool such as [CapFrameX](https://www.capframex.com/) or [PresentMon](https://github.com/GameTechDev/PresentMon), using the same game and scene.
 
-**4.** Click **Next → Install**, then **Finish**.
+<br>
 
-**5.** Open **Optimus X** from your desktop or Start menu. Accept the Windows (UAC) prompt so every feature can work.
+## Installation
 
-That's it. 🎉
+**Requirements:** Windows 10 or Windows 11, 64-bit. Copilot and Recall options apply to Windows 11 only.
 
-**Requirements:** Windows 10 or Windows 11, 64-bit.
+1. Open the [latest release](https://github.com/eww-didac/OPTIMUS-X/releases/latest) and download `OptimusX-Setup-x.x.x.exe`.
+2. Verify the download. In PowerShell, run:
+
+   ```powershell
+   Get-FileHash .\OptimusX-Setup-x.x.x.exe -Algorithm SHA256
+   ```
+
+   The result must match the SHA-256 published in the release notes:
+
+   ```text
+   SHA-256: <add the hash here for each release>
+   ```
+
+3. Double-click the installer. If Windows shows *"Windows protected your PC"*, this is because the installer is not code-signed yet. Only continue with **More info → Run anyway** if the hash matches.
+4. Click **Next → Install**, then **Finish**.
+5. Open **Optimus X** and accept the Windows (UAC) prompt so every feature can work.
 
 **To uninstall:** *Settings → Apps → Installed apps → Optimus X → Uninstall*. Your settings and backups stay in `%LOCALAPPDATA%\OptimusX`, so you can still revert tweaks if you reinstall later.
 
 <details>
-<summary><b>🧑‍💻 Advanced: run from source code</b></summary>
+<summary><b>Run from source or build the installer</b></summary>
 
 <br>
 
-For developers only. You need [Python 3.11+](https://www.python.org/downloads/) (tick **"Add Python to PATH"**).
+You need [Python 3.11+](https://www.python.org/downloads/) with **"Add Python to PATH"** ticked.
 
 ```powershell
 git clone https://github.com/eww-didac/OPTIMUS-X.git
@@ -176,7 +209,7 @@ python -m pip install -r requirements.txt
 python main.py
 ```
 
-To build the installer yourself, install [Inno Setup 6](https://jrsoftware.org/isdl.php) and run:
+To build the installer, install [Inno Setup 6](https://jrsoftware.org/isdl.php) and run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\build.ps1
@@ -186,34 +219,27 @@ powershell -ExecutionPolicy Bypass -File .\build.ps1
 
 <br>
 
-## 🧭 How to use it
+## How to use it
 
-1. **Start with the Dashboard** and review your system status.
-2. *(Recommended)* Turn on **Dry-run mode** in Settings to preview changes safely.
-3. Click **Normal optimization**, or open **Tweaks & Privacy** and pick the tweaks you want.
-4. **Read the confirmation window.** It lists every change, its risk level and any warning.
-5. Keep **"Create a restore point"** ticked, then confirm.
-6. **Restart Windows** if the app tells you a reboot is needed.
+1. Open the **Dashboard** and review your system status.
+2. Turn on **Dry-run mode** in Settings and apply a profile once to see what would change.
+3. Turn dry-run off. Click **Normal optimization**, or open **Tweaks & Privacy** and choose individual tweaks.
+4. Read the confirmation window. It lists every change, its risk level and any warning.
+5. Keep **"Create a restore point"** ticked and confirm.
+6. Restart Windows if the app says a reboot is needed.
 
-Changed your mind? Go to **Settings → Revert backed-up tweaks** and everything returns to how it was.
-
-<br>
-
-## 🛡️ Your safety
-
-Optimus X was designed so you stay in control.
-
-- ✅ **Nothing runs without your confirmation.** You always see what will change first.
-- ✅ **Every original value is backed up** before it is modified.
-- ✅ **One-click revert** for each tweak, or all of them at once.
-- ✅ **Optional Windows restore point** before applying a profile.
-- ✅ **Smart cleanup protections:** it never follows links and refuses dangerous folders.
-- ✅ **No hidden behavior:** it never downloads code or bundles third-party installers.
-
-<details>
-<summary><b>📁 Where is my data stored?</b></summary>
+To undo backed-up changes, go to **Settings → Revert backed-up tweaks**.
 
 <br>
+
+## Privacy and network activity
+
+- No account, no cloud, no telemetry sent by Optimus X.
+- The dashboard measures network latency by pinging `1.1.1.1` (Cloudflare DNS). This is the only network activity the app is designed to perform.
+- The app does not download or run code from the internet and does not bundle third-party installers.
+- The full source is in this repository, so you can check these claims.
+
+### Where your data is stored
 
 Everything lives in `%LOCALAPPDATA%\OptimusX`:
 
@@ -221,22 +247,20 @@ Everything lives in `%LOCALAPPDATA%\OptimusX`:
 | --- | --- |
 | `data\` | Your preferences and the backups used to revert changes |
 | `logs\` | A readable activity log and a technical log |
-| `reports\` | System reports you export from the Toolbox |
+| `reports\` | System reports exported from the Toolbox |
 
-> ⚠️ Revert your tweaks from **Settings** *before* deleting this folder, because the backups are what make changes reversible.
-
-</details>
+> **Revert your tweaks from Settings before you delete this folder.** The backups in it are what make changes reversible.
 
 <br>
 
-## ❓ FAQ
+## FAQ
 
 <details>
 <summary><b>Is it safe?</b></summary>
 
 <br>
 
-It is designed to be: confirmations, backups, a restore point and a revert button. Still, it changes real Windows settings, so read each confirmation window and keep a restore point.
+It is designed to reduce risk with confirmations, backups, dry-run mode and an optional restore point. It still changes real Windows settings and some changes cannot be reverted by the app. Read each confirmation window and keep a restore point or system image.
 
 </details>
 
@@ -245,7 +269,7 @@ It is designed to be: confirmations, backups, a restore point and a revert butto
 
 <br>
 
-For changes to services, the system registry and installed apps, yes. The app opens normally without them and offers to restart as administrator when you need it.
+For changes to services, the system registry and installed apps, yes. The app opens without them and offers to restart as administrator when needed.
 
 </details>
 
@@ -254,16 +278,7 @@ For changes to services, the system registry and installed apps, yes. The app op
 
 <br>
 
-The installer is not code-signed yet, and security tools can be cautious about anything that edits system settings. In SmartScreen click **More info → Run anyway**. You can read the full source code in this repository.
-
-</details>
-
-<details>
-<summary><b>Why does a tweak say "No saved backup" when I revert it?</b></summary>
-
-<br>
-
-That value was already set before you used Optimus X, or its backup was deleted. The app cannot know the original value, so change it manually in Windows if you want it undone.
+The installer is not code-signed yet, and security tools are often cautious about software that edits system settings. Check the installer's SHA-256 against the release notes, and review the source in this repository before continuing.
 
 </details>
 
@@ -281,7 +296,7 @@ Some Windows builds and regions block it. Windows can also reinstall Edge after 
 
 <br>
 
-The reading needs administrator rights, and not every motherboard exposes it. All other gauges still work.
+The reading needs administrator rights, and not every motherboard exposes it. The other gauges still work.
 
 </details>
 
@@ -299,33 +314,24 @@ Delete `%LOCALAPPDATA%\OptimusX\data\settings.json` and start the app again.
 
 <br>
 
-Run `python -m pip install -r requirements.txt` again, in the project folder. This does not happen with the installer.
+Run `python -m pip install -r requirements.txt` again from the project folder. This does not happen with the installer.
 
 </details>
 
 <br>
 
-## ⚠️ Good to know
+## Reporting problems
 
-- Some tweaks trade a feature for speed. For example, turning off Search indexing makes Start-menu searches slower. Each card tells you the trade-off before you apply it.
-- Pinning the kernel in RAM is only recommended with **16 GB of RAM or more**.
-- The app list is curated. It never includes the Microsoft Store, system-critical packages or frameworks.
-- The "estimated FPS gain" on the Dashboard is a rough guide, not a measured result.
+Open an [issue](https://github.com/eww-didac/OPTIMUS-X/issues) and include your Windows version, the Optimus X version, what you applied and the relevant lines from `%LOCALAPPDATA%\OptimusX\logs`.
 
 <br>
 
-## 📜 Disclaimer
+## Disclaimer
 
-Optimus X is provided **as-is, without warranty of any kind**. It modifies Windows services, registry values, installed packages and temporary files. Use it on a machine you can restore, keep a Windows restore point or system image, and review each dialog before confirming. The authors are not responsible for data loss, reduced functionality or policy violations resulting from its use.
+Optimus X is provided **as-is, without warranty of any kind**. It modifies Windows services, registry values, installed packages and files. Use it on a machine you can restore, keep a Windows restore point or system image, and review each dialog before confirming. The authors are not responsible for data loss, reduced functionality, loss of security updates or policy violations resulting from its use.
 
 <br>
 
-## 📄 License
+## License
 
 Released under the [MIT License](LICENSE).
-
-<br>
-
-<div align="center">
-
-**If Optimus X helped you, consider leaving a ⭐ on the repository.**
