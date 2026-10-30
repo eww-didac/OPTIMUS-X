@@ -11,7 +11,7 @@ OPTIMUS X
 <br>
 
 ![Platform](https://img.shields.io/badge/Windows-10%20%7C%2011%20(64--bit)-0078D4?style=for-the-badge&logo=windows&logoColor=white)
-![Version](https://img.shields.io/badge/Version-2.0-34C9F4?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-2.1-34C9F4?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-2FE0A4?style=for-the-badge)
 
 <br>
